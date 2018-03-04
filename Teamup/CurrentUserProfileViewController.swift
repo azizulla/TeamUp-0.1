@@ -40,7 +40,6 @@ class CurrentUserProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //  startObservingDatabase()
         
         let userID = Auth.auth().currentUser?.uid
         ref = Database.database().reference()
