@@ -1,0 +1,544 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		32BEB813DE4673D0D11C0B30 /* Pods_Teamup.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4A63E218676B095A6633870 /* Pods_Teamup.framework */; };
+		8F4367F12049AB81000F8A8D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F4367F02049AB81000F8A8D /* AppDelegate.swift */; };
+		8F4367F32049AB81000F8A8D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F4367F22049AB81000F8A8D /* ViewController.swift */; };
+		8F4367F62049AB81000F8A8D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F4367F42049AB81000F8A8D /* Main.storyboard */; };
+		8F4367F82049AB81000F8A8D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F4367F72049AB81000F8A8D /* Assets.xcassets */; };
+		8F4367FB2049AB81000F8A8D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F4367F92049AB81000F8A8D /* LaunchScreen.storyboard */; };
+		8F4368042049B3E4000F8A8D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F4368032049B3E3000F8A8D /* LoginViewController.swift */; };
+		8F4368062049B87F000F8A8D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F4368052049B87F000F8A8D /* GoogleService-Info.plist */; };
+		8F4368092049B935000F8A8D /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F4368082049B935000F8A8D /* Team.swift */; };
+		8F43680B2049B952000F8A8D /* Players.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F43680A2049B952000F8A8D /* Players.swift */; };
+		8F43680D2049B973000F8A8D /* PickUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F43680C2049B973000F8A8D /* PickUp.swift */; };
+		8F4368102049BA7D000F8A8D /* MainScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F43680F2049BA7D000F8A8D /* MainScrollViewController.swift */; };
+		8F4368132049BF49000F8A8D /* SearchPickUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F4368122049BF49000F8A8D /* SearchPickUpViewController.swift */; };
+		8F4368152049C0A8000F8A8D /* PickUpCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F4368142049C0A8000F8A8D /* PickUpCell.swift */; };
+		8F4368172049C148000F8A8D /* PickUpProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F4368162049C148000F8A8D /* PickUpProfileViewController.swift */; };
+		8F43681A2049D779000F8A8D /* ShowTeamTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F4368192049D779000F8A8D /* ShowTeamTeamViewController.swift */; };
+		8F43681C2049DAF0000F8A8D /* TeamProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F43681B2049DAF0000F8A8D /* TeamProfileView.swift */; };
+		8F43681F2049DDFD000F8A8D /* TeamSquadListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F43681E2049DDFD000F8A8D /* TeamSquadListViewController.swift */; };
+		8F4368212049E23A000F8A8D /* NewTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F4368202049E23A000F8A8D /* NewTeamViewController.swift */; };
+		8F4368232049F892000F8A8D /* MainPickUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F4368222049F892000F8A8D /* MainPickUpViewController.swift */; };
+		8F436825204A069F000F8A8D /* MainTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F436824204A069F000F8A8D /* MainTeamViewController.swift */; };
+		8F55E888204A68FB00E5BF00 /* CurrentUserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F55E887204A68FB00E5BF00 /* CurrentUserProfileViewController.swift */; };
+		8F55E88B204A6E1A00E5BF00 /* NewPickUpDateTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F55E88A204A6E1A00E5BF00 /* NewPickUpDateTimeViewController.swift */; };
+		8F55E88D204A6E6F00E5BF00 /* NewPickUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F55E88C204A6E6F00E5BF00 /* NewPickUpViewController.swift */; };
+		8F8DB140204BAA490017A8BE /* NewPlayerSignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8DB13F204BAA490017A8BE /* NewPlayerSignUpController.swift */; };
+		8F8DB142204BAAE40017A8BE /* NewPlayerDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8DB141204BAAE40017A8BE /* NewPlayerDetailController.swift */; };
+		8F8DB144204BABAB0017A8BE /* NewPlayerImageProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8DB143204BABAB0017A8BE /* NewPlayerImageProfileController.swift */; };
+		8F8DB146204BAC490017A8BE /* NewPlayerSportDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8DB145204BAC490017A8BE /* NewPlayerSportDetailController.swift */; };
+		8F8DB148204BAD2E0017A8BE /* WelcomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8DB147204BAD2E0017A8BE /* WelcomeController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		8F4367ED2049AB81000F8A8D /* Teamup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Teamup.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8F4367F02049AB81000F8A8D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		8F4367F22049AB81000F8A8D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8F4367F52049AB81000F8A8D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8F4367F72049AB81000F8A8D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8F4367FA2049AB81000F8A8D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8F4367FC2049AB81000F8A8D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8F4368032049B3E3000F8A8D /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		8F4368052049B87F000F8A8D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		8F4368082049B935000F8A8D /* Team.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
+		8F43680A2049B952000F8A8D /* Players.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Players.swift; sourceTree = "<group>"; };
+		8F43680C2049B973000F8A8D /* PickUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickUp.swift; sourceTree = "<group>"; };
+		8F43680F2049BA7D000F8A8D /* MainScrollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScrollViewController.swift; sourceTree = "<group>"; };
+		8F4368122049BF49000F8A8D /* SearchPickUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchPickUpViewController.swift; sourceTree = "<group>"; };
+		8F4368142049C0A8000F8A8D /* PickUpCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickUpCell.swift; sourceTree = "<group>"; };
+		8F4368162049C148000F8A8D /* PickUpProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickUpProfileViewController.swift; sourceTree = "<group>"; };
+		8F4368192049D779000F8A8D /* ShowTeamTeamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowTeamTeamViewController.swift; sourceTree = "<group>"; };
+		8F43681B2049DAF0000F8A8D /* TeamProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamProfileView.swift; sourceTree = "<group>"; };
+		8F43681E2049DDFD000F8A8D /* TeamSquadListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamSquadListViewController.swift; sourceTree = "<group>"; };
+		8F4368202049E23A000F8A8D /* NewTeamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTeamViewController.swift; sourceTree = "<group>"; };
+		8F4368222049F892000F8A8D /* MainPickUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPickUpViewController.swift; sourceTree = "<group>"; };
+		8F436824204A069F000F8A8D /* MainTeamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTeamViewController.swift; sourceTree = "<group>"; };
+		8F55E887204A68FB00E5BF00 /* CurrentUserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentUserProfileViewController.swift; sourceTree = "<group>"; };
+		8F55E88A204A6E1A00E5BF00 /* NewPickUpDateTimeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPickUpDateTimeViewController.swift; sourceTree = "<group>"; };
+		8F55E88C204A6E6F00E5BF00 /* NewPickUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPickUpViewController.swift; sourceTree = "<group>"; };
+		8F8DB13F204BAA490017A8BE /* NewPlayerSignUpController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPlayerSignUpController.swift; sourceTree = "<group>"; };
+		8F8DB141204BAAE40017A8BE /* NewPlayerDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPlayerDetailController.swift; sourceTree = "<group>"; };
+		8F8DB143204BABAB0017A8BE /* NewPlayerImageProfileController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPlayerImageProfileController.swift; sourceTree = "<group>"; };
+		8F8DB145204BAC490017A8BE /* NewPlayerSportDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPlayerSportDetailController.swift; sourceTree = "<group>"; };
+		8F8DB147204BAD2E0017A8BE /* WelcomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeController.swift; sourceTree = "<group>"; };
+		BC55141398B59C330462DDB3 /* Pods-Teamup.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Teamup.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Teamup/Pods-Teamup.debug.xcconfig"; sourceTree = "<group>"; };
+		C4A63E218676B095A6633870 /* Pods_Teamup.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Teamup.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC268B06ACD25B31A33002D2 /* Pods-Teamup.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Teamup.release.xcconfig"; path = "Pods/Target Support Files/Pods-Teamup/Pods-Teamup.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8F4367EA2049AB81000F8A8D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				32BEB813DE4673D0D11C0B30 /* Pods_Teamup.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0E9586B047E091B807277A37 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BC55141398B59C330462DDB3 /* Pods-Teamup.debug.xcconfig */,
+				DC268B06ACD25B31A33002D2 /* Pods-Teamup.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		6CB0C8C9B23E573D42797266 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C4A63E218676B095A6633870 /* Pods_Teamup.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8F4367E42049AB81000F8A8D = {
+			isa = PBXGroup;
+			children = (
+				8F4367EF2049AB81000F8A8D /* Teamup */,
+				8F4367EE2049AB81000F8A8D /* Products */,
+				0E9586B047E091B807277A37 /* Pods */,
+				6CB0C8C9B23E573D42797266 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		8F4367EE2049AB81000F8A8D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8F4367ED2049AB81000F8A8D /* Teamup.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8F4367EF2049AB81000F8A8D /* Teamup */ = {
+			isa = PBXGroup;
+			children = (
+				8F43680E2049BA52000F8A8D /* support files */,
+				8F4367F22049AB81000F8A8D /* ViewController.swift */,
+				8F4367F42049AB81000F8A8D /* Main.storyboard */,
+				8F4367F72049AB81000F8A8D /* Assets.xcassets */,
+				8F4367F92049AB81000F8A8D /* LaunchScreen.storyboard */,
+				8F4368072049B91D000F8A8D /* class */,
+				8F55E886204A689400E5BF00 /* CurrentUser */,
+				8F4368182049D739000F8A8D /* Team */,
+				8F4368112049BEFC000F8A8D /* PickUp */,
+				8F4368022049B3B1000F8A8D /* Login */,
+				8F43680F2049BA7D000F8A8D /* MainScrollViewController.swift */,
+			);
+			path = Teamup;
+			sourceTree = "<group>";
+		};
+		8F4368022049B3B1000F8A8D /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				8F4368032049B3E3000F8A8D /* LoginViewController.swift */,
+				8F8DB13F204BAA490017A8BE /* NewPlayerSignUpController.swift */,
+				8F8DB141204BAAE40017A8BE /* NewPlayerDetailController.swift */,
+				8F8DB143204BABAB0017A8BE /* NewPlayerImageProfileController.swift */,
+				8F8DB145204BAC490017A8BE /* NewPlayerSportDetailController.swift */,
+				8F8DB147204BAD2E0017A8BE /* WelcomeController.swift */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		8F4368072049B91D000F8A8D /* class */ = {
+			isa = PBXGroup;
+			children = (
+				8F4368082049B935000F8A8D /* Team.swift */,
+				8F43680A2049B952000F8A8D /* Players.swift */,
+				8F43680C2049B973000F8A8D /* PickUp.swift */,
+			);
+			name = class;
+			sourceTree = "<group>";
+		};
+		8F43680E2049BA52000F8A8D /* support files */ = {
+			isa = PBXGroup;
+			children = (
+				8F4367FC2049AB81000F8A8D /* Info.plist */,
+				8F4367F02049AB81000F8A8D /* AppDelegate.swift */,
+				8F4368052049B87F000F8A8D /* GoogleService-Info.plist */,
+			);
+			name = "support files";
+			sourceTree = "<group>";
+		};
+		8F4368112049BEFC000F8A8D /* PickUp */ = {
+			isa = PBXGroup;
+			children = (
+				8F55E889204A6DC700E5BF00 /* New Pickup */,
+				8F4368122049BF49000F8A8D /* SearchPickUpViewController.swift */,
+				8F4368142049C0A8000F8A8D /* PickUpCell.swift */,
+				8F4368162049C148000F8A8D /* PickUpProfileViewController.swift */,
+				8F4368222049F892000F8A8D /* MainPickUpViewController.swift */,
+			);
+			name = PickUp;
+			sourceTree = "<group>";
+		};
+		8F4368182049D739000F8A8D /* Team */ = {
+			isa = PBXGroup;
+			children = (
+				8F4368192049D779000F8A8D /* ShowTeamTeamViewController.swift */,
+				8F43681B2049DAF0000F8A8D /* TeamProfileView.swift */,
+				8F43681E2049DDFD000F8A8D /* TeamSquadListViewController.swift */,
+				8F4368202049E23A000F8A8D /* NewTeamViewController.swift */,
+				8F436824204A069F000F8A8D /* MainTeamViewController.swift */,
+			);
+			name = Team;
+			sourceTree = "<group>";
+		};
+		8F55E886204A689400E5BF00 /* CurrentUser */ = {
+			isa = PBXGroup;
+			children = (
+				8F55E887204A68FB00E5BF00 /* CurrentUserProfileViewController.swift */,
+			);
+			name = CurrentUser;
+			sourceTree = "<group>";
+		};
+		8F55E889204A6DC700E5BF00 /* New Pickup */ = {
+			isa = PBXGroup;
+			children = (
+				8F55E88A204A6E1A00E5BF00 /* NewPickUpDateTimeViewController.swift */,
+				8F55E88C204A6E6F00E5BF00 /* NewPickUpViewController.swift */,
+			);
+			name = "New Pickup";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8F4367EC2049AB81000F8A8D /* Teamup */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8F4367FF2049AB81000F8A8D /* Build configuration list for PBXNativeTarget "Teamup" */;
+			buildPhases = (
+				14083B75F66A83C084681735 /* [CP] Check Pods Manifest.lock */,
+				8F4367E92049AB81000F8A8D /* Sources */,
+				8F4367EA2049AB81000F8A8D /* Frameworks */,
+				8F4367EB2049AB81000F8A8D /* Resources */,
+				7CB1BA4EBFAB126418F9CA86 /* [CP] Embed Pods Frameworks */,
+				33660072F3BAD958DE9E4E10 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Teamup;
+			productName = Teamup;
+			productReference = 8F4367ED2049AB81000F8A8D /* Teamup.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8F4367E52049AB81000F8A8D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = Azizulla;
+				TargetAttributes = {
+					8F4367EC2049AB81000F8A8D = {
+						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 8F4367E82049AB81000F8A8D /* Build configuration list for PBXProject "Teamup" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8F4367E42049AB81000F8A8D;
+			productRefGroup = 8F4367EE2049AB81000F8A8D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8F4367EC2049AB81000F8A8D /* Teamup */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8F4367EB2049AB81000F8A8D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8F4367FB2049AB81000F8A8D /* LaunchScreen.storyboard in Resources */,
+				8F4368062049B87F000F8A8D /* GoogleService-Info.plist in Resources */,
+				8F4367F82049AB81000F8A8D /* Assets.xcassets in Resources */,
+				8F4367F62049AB81000F8A8D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		14083B75F66A83C084681735 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Teamup-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		33660072F3BAD958DE9E4E10 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Teamup/Pods-Teamup-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7CB1BA4EBFAB126418F9CA86 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Teamup/Pods-Teamup-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Teamup/Pods-Teamup-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8F4367E92049AB81000F8A8D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8F4368132049BF49000F8A8D /* SearchPickUpViewController.swift in Sources */,
+				8F55E88D204A6E6F00E5BF00 /* NewPickUpViewController.swift in Sources */,
+				8F43681C2049DAF0000F8A8D /* TeamProfileView.swift in Sources */,
+				8F436825204A069F000F8A8D /* MainTeamViewController.swift in Sources */,
+				8F4368092049B935000F8A8D /* Team.swift in Sources */,
+				8F4368172049C148000F8A8D /* PickUpProfileViewController.swift in Sources */,
+				8F4368212049E23A000F8A8D /* NewTeamViewController.swift in Sources */,
+				8F55E88B204A6E1A00E5BF00 /* NewPickUpDateTimeViewController.swift in Sources */,
+				8F43681A2049D779000F8A8D /* ShowTeamTeamViewController.swift in Sources */,
+				8F8DB144204BABAB0017A8BE /* NewPlayerImageProfileController.swift in Sources */,
+				8F43680B2049B952000F8A8D /* Players.swift in Sources */,
+				8F8DB140204BAA490017A8BE /* NewPlayerSignUpController.swift in Sources */,
+				8F4368042049B3E4000F8A8D /* LoginViewController.swift in Sources */,
+				8F43680D2049B973000F8A8D /* PickUp.swift in Sources */,
+				8F8DB146204BAC490017A8BE /* NewPlayerSportDetailController.swift in Sources */,
+				8F4367F32049AB81000F8A8D /* ViewController.swift in Sources */,
+				8F4368102049BA7D000F8A8D /* MainScrollViewController.swift in Sources */,
+				8F4368152049C0A8000F8A8D /* PickUpCell.swift in Sources */,
+				8F8DB148204BAD2E0017A8BE /* WelcomeController.swift in Sources */,
+				8F4368232049F892000F8A8D /* MainPickUpViewController.swift in Sources */,
+				8F8DB142204BAAE40017A8BE /* NewPlayerDetailController.swift in Sources */,
+				8F55E888204A68FB00E5BF00 /* CurrentUserProfileViewController.swift in Sources */,
+				8F43681F2049DDFD000F8A8D /* TeamSquadListViewController.swift in Sources */,
+				8F4367F12049AB81000F8A8D /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		8F4367F42049AB81000F8A8D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8F4367F52049AB81000F8A8D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		8F4367F92049AB81000F8A8D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8F4367FA2049AB81000F8A8D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8F4367FD2049AB81000F8A8D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		8F4367FE2049AB81000F8A8D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8F4368002049AB81000F8A8D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BC55141398B59C330462DDB3 /* Pods-Teamup.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Teamup/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Teamup;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		8F4368012049AB81000F8A8D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DC268B06ACD25B31A33002D2 /* Pods-Teamup.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Teamup/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Teamup;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8F4367E82049AB81000F8A8D /* Build configuration list for PBXProject "Teamup" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8F4367FD2049AB81000F8A8D /* Debug */,
+				8F4367FE2049AB81000F8A8D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8F4367FF2049AB81000F8A8D /* Build configuration list for PBXNativeTarget "Teamup" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8F4368002049AB81000F8A8D /* Debug */,
+				8F4368012049AB81000F8A8D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8F4367E52049AB81000F8A8D /* Project object */;
+}
