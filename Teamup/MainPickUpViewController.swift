@@ -81,5 +81,25 @@ class MainPickUpViewController: UIViewController, UITableViewDelegate, UITableVi
         // return configureCell(cell, at: indexPath)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "myPickUpProfile"{
+            
+            let navigationController = segue.destination as! UINavigationController
+            let detailVC = navigationController.topViewController as! PickUpProfileViewController
+            let indexPath = tableView.indexPathForSelectedRow
+            
+            // guard let detailVC = segue.destination as? TeamProfileView, let indexPath = tableView.indexPathForSelectedRow else{ return }
+            
+            detailVC.selectedPost = pickUp[(indexPath?.row)!]
+            // detailVC.selectedTeam = team[indexPath.row]
+            
+            
+            // detailVC.selectedTeam = team[indexPath.row]
+            
+        }
+        
+    }
+
 
 }

@@ -17,6 +17,7 @@ import Firebase
 class PickUpProfileViewController: UIViewController {
     
     var selectedPost: NSDictionary!
+    
     var teamSquad: Team!
     
     var team = [Team]()

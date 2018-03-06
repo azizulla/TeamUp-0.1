@@ -44,15 +44,16 @@ class CurrentUserProfileViewController: UIViewController {
         let userID = Auth.auth().currentUser?.uid
         ref = Database.database().reference()
         
-        ref?.child("Players").observeSingleEvent(of: .value, with: { (snapshot) in
+        ref?.child("Players").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
             // databaseRef.child("following").child(self.loggedInUser!.uid).child(self.otherUser?["uid"] as! String).observe(.value, with: { (snapshot) in
             
-            if snapshot.hasChild(userID!)
-            {
+           // if snapshot.hasChild(userID!)
+           // {
+            
                 var newItems = [Players]()
                 
-                for itemSnapShot in snapshot.children {
-                    let item = Players(snapshot: itemSnapShot as! DataSnapshot)
+            
+                    let item = Players(snapshot: snapshot as! DataSnapshot)
                     newItems.append(item)
                     
                     
@@ -69,16 +70,6 @@ class CurrentUserProfileViewController: UIViewController {
                     let last = item.lastName
                     self.playerFirstNameLabel.text = first! + " " + last!
                     
-                    
-                }
-                
-            }
-            else
-            {
-                
-                print("failed player detail")
-            }
-            
             
         }) { (error) in
             

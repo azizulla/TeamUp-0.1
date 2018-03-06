@@ -28,9 +28,12 @@
 		8F4368212049E23A000F8A8D /* NewTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F4368202049E23A000F8A8D /* NewTeamViewController.swift */; };
 		8F4368232049F892000F8A8D /* MainPickUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F4368222049F892000F8A8D /* MainPickUpViewController.swift */; };
 		8F436825204A069F000F8A8D /* MainTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F436824204A069F000F8A8D /* MainTeamViewController.swift */; };
+		8F44D08C204C579D006960C9 /* PlayerListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F44D08B204C579D006960C9 /* PlayerListController.swift */; };
+		8F44D08E204C5822006960C9 /* PlayersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F44D08D204C5822006960C9 /* PlayersCell.swift */; };
 		8F55E888204A68FB00E5BF00 /* CurrentUserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F55E887204A68FB00E5BF00 /* CurrentUserProfileViewController.swift */; };
 		8F55E88B204A6E1A00E5BF00 /* NewPickUpDateTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F55E88A204A6E1A00E5BF00 /* NewPickUpDateTimeViewController.swift */; };
 		8F55E88D204A6E6F00E5BF00 /* NewPickUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F55E88C204A6E6F00E5BF00 /* NewPickUpViewController.swift */; };
+		8F590E17204CF4AE00AB4D18 /* PlayerProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F590E16204CF4AE00AB4D18 /* PlayerProfileViewController.swift */; };
 		8F8DB140204BAA490017A8BE /* NewPlayerSignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8DB13F204BAA490017A8BE /* NewPlayerSignUpController.swift */; };
 		8F8DB142204BAAE40017A8BE /* NewPlayerDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8DB141204BAAE40017A8BE /* NewPlayerDetailController.swift */; };
 		8F8DB144204BABAB0017A8BE /* NewPlayerImageProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8DB143204BABAB0017A8BE /* NewPlayerImageProfileController.swift */; };
@@ -61,9 +64,12 @@
 		8F4368202049E23A000F8A8D /* NewTeamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTeamViewController.swift; sourceTree = "<group>"; };
 		8F4368222049F892000F8A8D /* MainPickUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPickUpViewController.swift; sourceTree = "<group>"; };
 		8F436824204A069F000F8A8D /* MainTeamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTeamViewController.swift; sourceTree = "<group>"; };
+		8F44D08B204C579D006960C9 /* PlayerListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerListController.swift; sourceTree = "<group>"; };
+		8F44D08D204C5822006960C9 /* PlayersCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayersCell.swift; sourceTree = "<group>"; };
 		8F55E887204A68FB00E5BF00 /* CurrentUserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentUserProfileViewController.swift; sourceTree = "<group>"; };
 		8F55E88A204A6E1A00E5BF00 /* NewPickUpDateTimeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPickUpDateTimeViewController.swift; sourceTree = "<group>"; };
 		8F55E88C204A6E6F00E5BF00 /* NewPickUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPickUpViewController.swift; sourceTree = "<group>"; };
+		8F590E16204CF4AE00AB4D18 /* PlayerProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerProfileViewController.swift; sourceTree = "<group>"; };
 		8F8DB13F204BAA490017A8BE /* NewPlayerSignUpController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPlayerSignUpController.swift; sourceTree = "<group>"; };
 		8F8DB141204BAAE40017A8BE /* NewPlayerDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPlayerDetailController.swift; sourceTree = "<group>"; };
 		8F8DB143204BABAB0017A8BE /* NewPlayerImageProfileController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPlayerImageProfileController.swift; sourceTree = "<group>"; };
@@ -127,10 +133,10 @@
 				8F43680E2049BA52000F8A8D /* support files */,
 				8F4367F22049AB81000F8A8D /* ViewController.swift */,
 				8F4367F42049AB81000F8A8D /* Main.storyboard */,
-				8F4367F72049AB81000F8A8D /* Assets.xcassets */,
 				8F4367F92049AB81000F8A8D /* LaunchScreen.storyboard */,
 				8F4368072049B91D000F8A8D /* class */,
 				8F55E886204A689400E5BF00 /* CurrentUser */,
+				8F44D08A204C572B006960C9 /* Players */,
 				8F4368182049D739000F8A8D /* Team */,
 				8F4368112049BEFC000F8A8D /* PickUp */,
 				8F4368022049B3B1000F8A8D /* Login */,
@@ -165,6 +171,7 @@
 		8F43680E2049BA52000F8A8D /* support files */ = {
 			isa = PBXGroup;
 			children = (
+				8F4367F72049AB81000F8A8D /* Assets.xcassets */,
 				8F4367FC2049AB81000F8A8D /* Info.plist */,
 				8F4367F02049AB81000F8A8D /* AppDelegate.swift */,
 				8F4368052049B87F000F8A8D /* GoogleService-Info.plist */,
@@ -194,6 +201,16 @@
 				8F436824204A069F000F8A8D /* MainTeamViewController.swift */,
 			);
 			name = Team;
+			sourceTree = "<group>";
+		};
+		8F44D08A204C572B006960C9 /* Players */ = {
+			isa = PBXGroup;
+			children = (
+				8F44D08B204C579D006960C9 /* PlayerListController.swift */,
+				8F44D08D204C5822006960C9 /* PlayersCell.swift */,
+				8F590E16204CF4AE00AB4D18 /* PlayerProfileViewController.swift */,
+			);
+			name = Players;
 			sourceTree = "<group>";
 		};
 		8F55E886204A689400E5BF00 /* CurrentUser */ = {
@@ -353,6 +370,7 @@
 				8F55E88D204A6E6F00E5BF00 /* NewPickUpViewController.swift in Sources */,
 				8F43681C2049DAF0000F8A8D /* TeamProfileView.swift in Sources */,
 				8F436825204A069F000F8A8D /* MainTeamViewController.swift in Sources */,
+				8F44D08E204C5822006960C9 /* PlayersCell.swift in Sources */,
 				8F4368092049B935000F8A8D /* Team.swift in Sources */,
 				8F4368172049C148000F8A8D /* PickUpProfileViewController.swift in Sources */,
 				8F4368212049E23A000F8A8D /* NewTeamViewController.swift in Sources */,
@@ -360,6 +378,7 @@
 				8F43681A2049D779000F8A8D /* ShowTeamTeamViewController.swift in Sources */,
 				8F8DB144204BABAB0017A8BE /* NewPlayerImageProfileController.swift in Sources */,
 				8F43680B2049B952000F8A8D /* Players.swift in Sources */,
+				8F44D08C204C579D006960C9 /* PlayerListController.swift in Sources */,
 				8F8DB140204BAA490017A8BE /* NewPlayerSignUpController.swift in Sources */,
 				8F4368042049B3E4000F8A8D /* LoginViewController.swift in Sources */,
 				8F43680D2049B973000F8A8D /* PickUp.swift in Sources */,
@@ -373,6 +392,7 @@
 				8F55E888204A68FB00E5BF00 /* CurrentUserProfileViewController.swift in Sources */,
 				8F43681F2049DDFD000F8A8D /* TeamSquadListViewController.swift in Sources */,
 				8F4367F12049AB81000F8A8D /* AppDelegate.swift in Sources */,
+				8F590E17204CF4AE00AB4D18 /* PlayerProfileViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

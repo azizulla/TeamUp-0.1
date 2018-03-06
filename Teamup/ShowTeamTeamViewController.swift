@@ -113,11 +113,13 @@ class ShowTeamViewController: UITableViewController  {
             
         else if segue.identifier == "showTeam"{
             
-            
-            guard let detailVC = segue.destination as? TeamProfileView, let indexPath = tableView.indexPathForSelectedRow else{ return }
+            let navigationController = segue.destination as! UINavigationController
+            let detailVC = navigationController.topViewController as! TeamProfileView
+            let indexPath = tableView.indexPathForSelectedRow
+          //  guard let detailVC = segue.destination as? TeamProfileView, let indexPath = tableView.indexPathForSelectedRow else{ return }
             
             // detailVC.selectedTeam = team[indexPath.row]
-            detailVC.selectedTeam = team[indexPath.row]
+            detailVC.selectedTeam = team[(indexPath?.row)!]
             
         }
         

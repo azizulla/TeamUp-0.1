@@ -35,7 +35,7 @@ class MainTeamViewController: UIViewController, UITableViewDelegate, UITableView
     func startObservingDatabase () {
         let userID = Auth.auth().currentUser?.uid
         
-        ref?.child("Players").child(userID!).child("PickUp").observe(.value, with: { (snapshot) in
+        ref?.child("Players").child(userID!).child("team").observe(.value, with: { (snapshot) in
             var newItems = [Team]()
             
             for itemSnapShot in snapshot.children {
@@ -73,6 +73,27 @@ class MainTeamViewController: UIViewController, UITableViewDelegate, UITableView
         return cell
         // return configureCell(cell, at: indexPath)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "myTeamProfile"{
+            
+            let navigationController = segue.destination as! UINavigationController
+            let detailVC = navigationController.topViewController as! TeamProfileView
+            let indexPath = tableView.indexPathForSelectedRow
+            
+           // guard let detailVC = segue.destination as? TeamProfileView, let indexPath = tableView.indexPathForSelectedRow else{ return }
+            
+            detailVC.selectedTeam = team[(indexPath?.row)!]
+           // detailVC.selectedTeam = team[indexPath.row]
+            
+    
+           // detailVC.selectedTeam = team[indexPath.row]
+            
+        }
+        
+    }
+
     
     
 }

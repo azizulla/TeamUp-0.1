@@ -67,7 +67,9 @@ class TeamProfileView: UIViewController {
         
     }
     
-    
+    @IBAction func cancel(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     
     //  --- join Button
     
@@ -130,15 +132,16 @@ class TeamProfileView: UIViewController {
         
         if segue.identifier == "PassTeamSquadInfo"{
             
-          //  let navigationController = segue.destination as! UINavigationController
-           // let addTaskController = navigationController.topViewController as! TeamSquadListViewController
-           
-            guard let detailVC = segue.destination as? TeamSquadListViewController else{ return }
-           
+            let navigationController = segue.destination as! UINavigationController
+            let addTaskController = navigationController.topViewController as! TeamSquadListViewController
+            
+            //guard let detailVC = segue.destination as? TeamSquadListViewController  else{ return }
+            // let addTaskController = navigationController.topViewController as! AddTaskController
+            
             
             let currenTeam = selectedTeam
-            detailVC.selectedTeam = currenTeam
-           
+            addTaskController.selectedTeam = currenTeam
+            
             
             
         }

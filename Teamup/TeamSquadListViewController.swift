@@ -30,7 +30,9 @@ class TeamSquadListViewController: UITableViewController  {
         
     }
     
-    
+    @IBAction func cancel(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     
     func startObservingDatabase () {
         //  let currentPlayer = selectedPost["uid"] as? String
@@ -42,6 +44,7 @@ class TeamSquadListViewController: UITableViewController  {
             for itemSnapShot in snapshot.children {
                 let item = Players(snapshot: itemSnapShot as! DataSnapshot)
                 newItems.append(item)
+                print(item, "testing")
             }
             
             self.players = newItems
@@ -64,17 +67,22 @@ class TeamSquadListViewController: UITableViewController  {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "TeamSquadCell", for: indexPath)
-        // var cell = UITableViewCell(style: .default, reuseIdentifier:"cell")
+   
         
         let object = players[indexPath.row]
         cell.textLabel?.text = object.firstName
+    
         
+
         
+ 
         return cell
         // return configureCell(cell, at: indexPath)
     }
     
-    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
+    }
     
     
     // MARK: Navigation
