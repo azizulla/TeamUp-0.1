@@ -31,34 +31,7 @@ class ShowTeamViewController: UITableViewController  {
     }
 
     
-    @IBAction func signoutButtonPressed(_ sender: AnyObject) {
-        /* do {
-         try Auth.auth().signOut()
-         dismiss(animated: true, completion: nil)
-         } catch {
-         
-         }*/
-        if Auth.auth().currentUser != nil{
-            
-            do {
-                try? Auth.auth().signOut()
-                
-                if Auth.auth().currentUser == nil{
-                    
-                    let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "login") as! LoginViewController
-                    self.present(loginVC, animated: true, completion: nil)
-                }
-                
-                
-            } catch let error as NSError {
-                
-                print(error.localizedDescription)
-            }
-            
-            
-        }
-    }
-    
+       
     func startObservingDatabase () {
         ref?.child("Team").observe(.value, with: { (snapshot) in
             var newItems = [Team]()

@@ -5,21 +5,45 @@
 //  Created by Aziz on 2018-03-02.
 //  Copyright © 2018 Azizulla. All rights reserved.
 //
+/*
 
-import UIKit
-
-class ViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+ref?.child("Team").observe(.value, with: { (snapshot) in
+    
+    
+    if snapshot.hasChild(object.eventUid!){
+        
+        // if object.eventUid == item.teamUid{
+        for itemSnapShot in snapshot.children {
+            let item = Team(snapshot: itemSnapShot as! DataSnapshot )
+            print("match team")
+            
+            
+            cell?.playerNameLabel.text = item.teamName
+        }
+        
+    } else { print("not match team")
+        
+        self.ref?.child("PickUp").observe(.value, with: { (snapshot) in
+            
+            
+            if snapshot.hasChild(object.eventUid!){
+                for itemSnapShot in snapshot.children {
+                    
+                    let item = PickUp(snapshot: itemSnapShot as! DataSnapshot )
+                    
+                    cell?.playerNameLabel.text = item.pickUpName
+                    print("pickup matched")
+                    
+                    
+                    
+                }
+            } else {print("pickup not matched")}
+            
+        })
+        
     }
+    
+    
+})
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-
-}
-
+*/

@@ -85,13 +85,25 @@ class PickUpProfileViewController: UIViewController {
         let userID = Auth.auth().currentUser?.uid
         ref = Database.database().reference()
         
-        let currentPickUp = selectedPost.pickUpUid//["teamUid"] as? String
+        let currentPickUpAuthor = selectedPost.author
+        
+        
+        let uid = ref?.childByAutoId().key
+        let event:[String : AnyObject] = ["fromUid": userID as AnyObject,
+                                         "toUid":selectedPost.author as AnyObject,
+                                         "stats": "pending" as AnyObject,
+                                         "uid": "key" as AnyObject,
+                                         "eventUid": selectedPost.pickUpUid as AnyObject]
+        
+       // ref?.child("notify").child(key!).setValue(team)
+        
+        ref?.child("Players").child(currentPickUpAuthor!).child("Notify").child("Recieve").child(uid!).setValue(event)
+        ref?.child("Players").child(userID!).child("Notify").child("Send").child(uid!).setValue(event)
+
         
         
         
-        
-        
-        //  --- get pickup detail
+  /*      //  --- get pickup detail
         
         ref?.child("PickUp").child(currentPickUp!).observeSingleEvent(of: .value, with: { (snapshot) in
             let item = PickUp(snapshot: snapshot as! DataSnapshot)
@@ -134,7 +146,7 @@ class PickUpProfileViewController: UIViewController {
             print(error.localizedDescription)
         }
         
-        
+        */
         
     }
     

@@ -82,9 +82,26 @@ class TeamProfileView: UIViewController {
         ref = Database.database().reference()
         let currenTeam = selectedTeam.teamUid
         
+        let currentPickUpAuthor = selectedTeam.author
+        
+        
+        let uid = ref?.childByAutoId().key
+        let event:[String : AnyObject] = ["fromUid": userID as AnyObject,
+                                          "toUid":selectedTeam.author as AnyObject,
+                                          "stats": "pending" as AnyObject,
+                                          "uid": "key" as AnyObject,
+                                          "eventUid": selectedTeam.teamUid as AnyObject]
+        
+        // ref?.child("notify").child(key!).setValue(team)
+        
+        ref?.child("Players").child(currentPickUpAuthor!).child("Notify").child("Recieve").child(uid!).setValue(event)
+        ref?.child("Players").child(userID!).child("Notify").child("Send").child(uid!).setValue(event)
         
         
         
+        
+        
+      /*
         //  --- get team detail
         
         ref?.child("Team").child(currenTeam!).observeSingleEvent(of: .value, with: { (snapshot) in
@@ -123,10 +140,10 @@ class TeamProfileView: UIViewController {
             print(error.localizedDescription)
         }
         
-        
+       */
         
     } // end of join button
-    
+ 
     
    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         

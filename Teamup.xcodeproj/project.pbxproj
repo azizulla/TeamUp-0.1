@@ -34,6 +34,9 @@
 		8F55E88B204A6E1A00E5BF00 /* NewPickUpDateTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F55E88A204A6E1A00E5BF00 /* NewPickUpDateTimeViewController.swift */; };
 		8F55E88D204A6E6F00E5BF00 /* NewPickUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F55E88C204A6E6F00E5BF00 /* NewPickUpViewController.swift */; };
 		8F590E17204CF4AE00AB4D18 /* PlayerProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F590E16204CF4AE00AB4D18 /* PlayerProfileViewController.swift */; };
+		8F746F5C204F776F0098A1EF /* NotifictaionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F746F5B204F776F0098A1EF /* NotifictaionViewController.swift */; };
+		8F746F5E204F78210098A1EF /* NotificationRequestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F746F5D204F78210098A1EF /* NotificationRequestCell.swift */; };
+		8F746F60204F7EFD0098A1EF /* Notify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F746F5F204F7EFD0098A1EF /* Notify.swift */; };
 		8F8DB140204BAA490017A8BE /* NewPlayerSignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8DB13F204BAA490017A8BE /* NewPlayerSignUpController.swift */; };
 		8F8DB142204BAAE40017A8BE /* NewPlayerDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8DB141204BAAE40017A8BE /* NewPlayerDetailController.swift */; };
 		8F8DB144204BABAB0017A8BE /* NewPlayerImageProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8DB143204BABAB0017A8BE /* NewPlayerImageProfileController.swift */; };
@@ -70,6 +73,9 @@
 		8F55E88A204A6E1A00E5BF00 /* NewPickUpDateTimeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPickUpDateTimeViewController.swift; sourceTree = "<group>"; };
 		8F55E88C204A6E6F00E5BF00 /* NewPickUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPickUpViewController.swift; sourceTree = "<group>"; };
 		8F590E16204CF4AE00AB4D18 /* PlayerProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerProfileViewController.swift; sourceTree = "<group>"; };
+		8F746F5B204F776F0098A1EF /* NotifictaionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotifictaionViewController.swift; sourceTree = "<group>"; };
+		8F746F5D204F78210098A1EF /* NotificationRequestCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationRequestCell.swift; sourceTree = "<group>"; };
+		8F746F5F204F7EFD0098A1EF /* Notify.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notify.swift; sourceTree = "<group>"; };
 		8F8DB13F204BAA490017A8BE /* NewPlayerSignUpController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPlayerSignUpController.swift; sourceTree = "<group>"; };
 		8F8DB141204BAAE40017A8BE /* NewPlayerDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPlayerDetailController.swift; sourceTree = "<group>"; };
 		8F8DB143204BABAB0017A8BE /* NewPlayerImageProfileController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPlayerImageProfileController.swift; sourceTree = "<group>"; };
@@ -134,6 +140,7 @@
 				8F4367F22049AB81000F8A8D /* ViewController.swift */,
 				8F4367F42049AB81000F8A8D /* Main.storyboard */,
 				8F4367F92049AB81000F8A8D /* LaunchScreen.storyboard */,
+				8F746F5A204F76FB0098A1EF /* Notification */,
 				8F4368072049B91D000F8A8D /* class */,
 				8F55E886204A689400E5BF00 /* CurrentUser */,
 				8F44D08A204C572B006960C9 /* Players */,
@@ -162,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				8F4368082049B935000F8A8D /* Team.swift */,
+				8F746F5F204F7EFD0098A1EF /* Notify.swift */,
 				8F43680A2049B952000F8A8D /* Players.swift */,
 				8F43680C2049B973000F8A8D /* PickUp.swift */,
 			);
@@ -228,6 +236,15 @@
 				8F55E88C204A6E6F00E5BF00 /* NewPickUpViewController.swift */,
 			);
 			name = "New Pickup";
+			sourceTree = "<group>";
+		};
+		8F746F5A204F76FB0098A1EF /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				8F746F5B204F776F0098A1EF /* NotifictaionViewController.swift */,
+				8F746F5D204F78210098A1EF /* NotificationRequestCell.swift */,
+			);
+			name = Notification;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -380,6 +397,7 @@
 				8F43680B2049B952000F8A8D /* Players.swift in Sources */,
 				8F44D08C204C579D006960C9 /* PlayerListController.swift in Sources */,
 				8F8DB140204BAA490017A8BE /* NewPlayerSignUpController.swift in Sources */,
+				8F746F60204F7EFD0098A1EF /* Notify.swift in Sources */,
 				8F4368042049B3E4000F8A8D /* LoginViewController.swift in Sources */,
 				8F43680D2049B973000F8A8D /* PickUp.swift in Sources */,
 				8F8DB146204BAC490017A8BE /* NewPlayerSportDetailController.swift in Sources */,
@@ -389,9 +407,11 @@
 				8F8DB148204BAD2E0017A8BE /* WelcomeController.swift in Sources */,
 				8F4368232049F892000F8A8D /* MainPickUpViewController.swift in Sources */,
 				8F8DB142204BAAE40017A8BE /* NewPlayerDetailController.swift in Sources */,
+				8F746F5E204F78210098A1EF /* NotificationRequestCell.swift in Sources */,
 				8F55E888204A68FB00E5BF00 /* CurrentUserProfileViewController.swift in Sources */,
 				8F43681F2049DDFD000F8A8D /* TeamSquadListViewController.swift in Sources */,
 				8F4367F12049AB81000F8A8D /* AppDelegate.swift in Sources */,
+				8F746F5C204F776F0098A1EF /* NotifictaionViewController.swift in Sources */,
 				8F590E17204CF4AE00AB4D18 /* PlayerProfileViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

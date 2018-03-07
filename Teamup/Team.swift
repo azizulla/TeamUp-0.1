@@ -43,7 +43,7 @@ class Team{
         
         players = snapshotValue["player"] as? String
         
-        print(teamName ?? "team", squad ?? 12)
+
         
         ref = snapshot.ref
     }
