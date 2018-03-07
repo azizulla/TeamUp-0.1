@@ -21,6 +21,10 @@ class MainPickUpViewController: UIViewController, UITableViewDelegate, UITableVi
     var ref:DatabaseReference?
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var noDataSearchButton: UIButton!
+    @IBOutlet weak var noDataLabel: UILabel!
+    
+    
    @IBAction func unwindToPickUp(segue:UIStoryboardSegue) { }
     
     override func viewDidLoad() {
@@ -60,7 +64,34 @@ class MainPickUpViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        var numberOfSection: Int = 0
+        if pickUp.count > 0{
+            
+            tableView.separatorStyle = .singleLine
+            numberOfSection = 1
+            //tableView.backgroundView = nil
+            tableView.isHidden = false
+            
+            noDataSearchButton.isHidden = true
+            noDataLabel.isHidden = true
+            
+        } else {
+            
+            noDataSearchButton.isHidden = false
+            noDataLabel.isHidden = false
+            noDataLabel.text = "no data available"
+            noDataLabel.textAlignment = .center
+            
+            tableView.isHidden = true
+            
+            // tableView.backgroundView = noDataLabel
+            //tableView.separatorStyle = .none
+            
+        }
+        
+        return numberOfSection
+        
+        // return 1
     }
     
    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -89,15 +120,10 @@ class MainPickUpViewController: UIViewController, UITableViewDelegate, UITableVi
             let detailVC = navigationController.topViewController as! PickUpProfileViewController
             let indexPath = tableView.indexPathForSelectedRow
             
-            // guard let detailVC = segue.destination as? TeamProfileView, let indexPath = tableView.indexPathForSelectedRow else{ return }
+          
             
             detailVC.selectedPost = pickUp[(indexPath?.row)!]
-            // detailVC.selectedTeam = team[indexPath.row]
-            
-            
-            // detailVC.selectedTeam = team[indexPath.row]
-            
-        }
+                    }
         
     }
 

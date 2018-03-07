@@ -14,7 +14,7 @@ import Firebase
 
 class PlayerProfileViewController: UIViewController {
     
-    var selectedPost: NSDictionary!
+    var selectedPost: Players!
     var teamSquad: Team!
     
     var team = [Team]()
@@ -35,41 +35,57 @@ class PlayerProfileViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    @IBOutlet weak var profileImageView: UIImageView!
+
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        playerEmailLabel.text = selectedPost["email"] as? String
-        // playerFirstNameLabel.text = selectedPost["firstName"] as? String
-        // playerLastNameLabel.text = selectedPost["lastName"] as? String
-        playerPositionLabel.text = selectedPost["position"] as? String
-        playerJerseyNumberLabel.text = selectedPost["squad"] as? String
-      //  playerFriendsLabel.text = selectedPost["uid"] as? String
         
-        let first = selectedPost["firstName"] as? String
-        let last = selectedPost["lastName"] as? String
+        let userID = Auth.auth().currentUser?.uid
+        ref = Database.database().reference()
         
-        playerFirstNameLabel.text = first! + " " + last!
+        ref?.child("Players").child(selectedPost.uid!).observeSingleEvent(of: .value, with: { (snapshot) in
+            // databaseRef.child("following").child(self.loggedInUser!.uid).child(self.otherUser?["uid"] as! String).observe(.value, with: { (snapshot) in
+            
+            // if snapshot.hasChild(userID!)
+            // {
+            
+            var newItems = [Players]()
+            
+            
+            let item = Players(snapshot: snapshot as! DataSnapshot)
+            newItems.append(item)
+            
+            
+            self.playerEmailLabel.text = item.email
+            self.playerPositionLabel.text = item.position
+            
+            let kitnumber = item.kitNumber
+            
+            print(kitnumber as Any )
+            self.playerJerseyNumberLabel.text = kitnumber
+            
+            
+            let first = item.firstName
+            let last = item.lastName
+            self.playerFirstNameLabel.text = first! + " " + last!
+            
+            
+        }) { (error) in
+            
+            print(error.localizedDescription)
+        }
         
         
         
-        self.inviteButton.layer.cornerRadius = 10
-        self.inviteButton.clipsToBounds = true
         
-        let currentPlayerUid = selectedPost["uid"] as? String
-        // let profileUrl = selectedPost["profileImageUrl"] as? String
-        
-        //let imageStorageRef = Storage.storage().reference().child("players/\(currentPlayerUid)profile-400x400.png")
-        
-        let imageStorageRef = Storage.storage().reference().child("players").child(currentPlayerUid!).child("profile-400x400.png")
+        // --- getting Images
+        let imageStorageRef = Storage.storage().reference().child("players").child(userID!).child("profile-400x400.png")
         
         imageStorageRef.getData(maxSize: 2 * 1024 * 1024) { data, error in
             // Error available with .localizedDescription, but can simply be that the image does not exist yet
             if error == nil{
-                
-                print(data)
                 
                 self.playerImage.image = UIImage(data: data!)
                 print("success uploading image from firebase")
@@ -77,9 +93,7 @@ class PlayerProfileViewController: UIViewController {
                 
                 print(error?.localizedDescription ?? "testing")
             }
-            
         }
-        
     }
     
     

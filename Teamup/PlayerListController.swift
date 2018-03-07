@@ -17,8 +17,8 @@ class PlayerListController: UITableViewController, UISearchResultsUpdating {
     
     
     let searchController = UISearchController(searchResultsController: nil)
-    var players = [NSDictionary?]()
-    var filteredUsers = [NSDictionary?]()
+    var players = [Players]()
+    var filteredUsers = [Players]()
     
     var selectedPlayer: Players!
     
@@ -54,8 +54,9 @@ class PlayerListController: UITableViewController, UISearchResultsUpdating {
             
             
             let key = snapshot.key
-            let snapshot = snapshot.value as? NSDictionary
-            snapshot?.setValue(key, forKey: "uid")
+          //  let snapshot = snapshot.value as? NSDictionary
+             let item = Players(snapshot: snapshot as! DataSnapshot)
+            item.setValue(key, forKey: "uid")
             
             if(key == userID)
             {
@@ -63,7 +64,7 @@ class PlayerListController: UITableViewController, UISearchResultsUpdating {
             }
             else
             {
-                self.players.append(snapshot)
+                self.players.append(item)
                 //insert the rows
                 self.tabelView.insertRows(at: [IndexPath(row:self.players.count-1,section:0)], with: UITableViewRowAnimation.automatic)
             }
@@ -95,7 +96,7 @@ class PlayerListController: UITableViewController, UISearchResultsUpdating {
         // let object = players[indexPath.row]
         // playerscell?.friendNameLabel.text = object.firstName
         
-        let user : NSDictionary?
+        let user : Players?
         
         if searchController.isActive && searchController.searchBar.text != ""{
             
@@ -105,11 +106,11 @@ class PlayerListController: UITableViewController, UISearchResultsUpdating {
         {
             user = self.players[indexPath.row]
         }
-        playerscell?.playerNameLabel.text = user?["firstName"] as? String
-        playerscell?.playerPositionLabel.text = user?["position"] as? String
+        playerscell?.playerNameLabel.text = user?.firstName//["firstName"] as? String
+        playerscell?.playerPositionLabel.text = user?.position//["position"] as? String
 
         
-        let currentPlayerUid = user?["uid"] as? String
+        let currentPlayerUid = user?.uid//["uid"] as? String
  
         let imageStorageRef = Storage.storage().reference().child("players").child(currentPlayerUid!).child("profile-400x400.png")
         
@@ -151,7 +152,7 @@ class PlayerListController: UITableViewController, UISearchResultsUpdating {
     {
         self.filteredUsers = self.players.filter{ user in
             
-            let username = user?["firstName"] as? String
+            let username = user.firstName//["firstName"] as? String
             
             
             return(username?.lowercased().contains(searchText.lowercased()))!

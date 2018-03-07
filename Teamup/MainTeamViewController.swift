@@ -21,6 +21,9 @@ class MainTeamViewController: UIViewController, UITableViewDelegate, UITableView
     var ref:DatabaseReference?
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var noDataSearchButton: UIButton!
+    @IBOutlet weak var noDataLabel: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,7 +56,34 @@ class MainTeamViewController: UIViewController, UITableViewDelegate, UITableView
     
     func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        var numberOfSection: Int = 0
+        if team.count > 0{
+        
+            tableView.separatorStyle = .singleLine
+            numberOfSection = 1
+            //tableView.backgroundView = nil
+            tableView.isHidden = false
+          
+            noDataSearchButton.isHidden = true
+            noDataLabel.isHidden = true
+            
+        } else {
+        
+            noDataSearchButton.isHidden = false
+            noDataLabel.isHidden = false
+            noDataLabel.text = "no data available"
+            noDataLabel.textAlignment = .center
+            
+            tableView.isHidden = true
+            
+           // tableView.backgroundView = noDataLabel         
+            //tableView.separatorStyle = .none
+        
+        }
+        
+        return numberOfSection
+        
+       // return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -113,7 +113,7 @@ class TeamProfileView: UIViewController {
             let key = snapshot.key
             
             let playerinfo:[String : AnyObject] = ["firstName": firstName as AnyObject,
-                                                   "key": userID as AnyObject]
+                                                   "uid": userID as AnyObject]
             let post = ["/players/\(String(describing: key))": playerinfo]
             
             self.ref?.child("Team").child(currenTeam!).updateChildValues(post)

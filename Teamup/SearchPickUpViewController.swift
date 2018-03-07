@@ -16,8 +16,8 @@ class SearchPickUpViewController: UITableViewController, UISearchResultsUpdating
     
     var searchController = UISearchController(searchResultsController: nil)
     
-    var players = [NSDictionary?]()
-    var filteredUsers = [NSDictionary?]()
+    var players = [PickUp]()
+    var filteredUsers = [PickUp]()
     
     @IBOutlet var pickUPTabelView: UITableView!
     
@@ -55,11 +55,10 @@ class SearchPickUpViewController: UITableViewController, UISearchResultsUpdating
             
             
             let key = snapshot.key
-            let snapshot = snapshot.value as? NSDictionary
-            snapshot?.setValue(key, forKey: "teamUid")
+           // let snapshot = snapshot.value as? NSDictionary
+            let item = PickUp(snapshot: snapshot as! DataSnapshot)
             
-            
-            self.players.append(snapshot)
+            self.players.append(item)
             
             print(snapshot, "testing snapshot")
             //insert the rows
@@ -91,7 +90,7 @@ class SearchPickUpViewController: UITableViewController, UISearchResultsUpdating
         
         
         
-        let user : NSDictionary?
+        let user : PickUp
         
         
         if searchController.isActive && searchController.searchBar.text != ""{
@@ -103,7 +102,7 @@ class SearchPickUpViewController: UITableViewController, UISearchResultsUpdating
             user = self.players[indexPath.row]
         }
         
-        let name = user?["name"] as! String
+        let name = user.pickUpName//["name"] as! String
         
         
         
@@ -128,7 +127,7 @@ class SearchPickUpViewController: UITableViewController, UISearchResultsUpdating
     {
         self.filteredUsers = self.players.filter{ user in
             
-            let username = user?["name"] as? String
+            let username = user.pickUpName
             
             return(username?.lowercased().contains(searchText.lowercased()))!
             
@@ -144,10 +143,20 @@ class SearchPickUpViewController: UITableViewController, UISearchResultsUpdating
         if segue.identifier == "PassingPickUpInfo"{
             
             
-            guard let detailVC = segue.destination as? PickUpProfileViewController, let indexPath = tableView.indexPathForSelectedRow else{ return }
+           // guard let detailVC = segue.destination as? PickUpProfileViewController, let indexPath = tableView.indexPathForSelectedRow else{ return }
             
-            detailVC.selectedPost = players[indexPath.row]
+            //detailVC.selectedPost = players[indexPath.row]
             
+            let navigationController = segue.destination as! UINavigationController
+            let detailVC = navigationController.topViewController as! PickUpProfileViewController
+            let indexPath = tableView.indexPathForSelectedRow
+            
+            // guard let detailVC = segue.destination as? TeamProfileView, let indexPath = tableView.indexPathForSelectedRow else{ return }
+            
+            detailVC.selectedPost = players[(indexPath?.row)!]
+            // detailVC.selectedTeam = team[indexPath.row]
+            
+
             
             
             

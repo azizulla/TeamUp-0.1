@@ -16,7 +16,7 @@ import Firebase
 
 class PickUpProfileViewController: UIViewController {
     
-    var selectedPost: NSDictionary!
+    var selectedPost: PickUp!
     
     var teamSquad: Team!
     
@@ -41,16 +41,16 @@ class PickUpProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        name.text = selectedPost["name"] as? String
-        kitcolor.text = selectedPost["jerseyColor"] as? String
-        eventTime.text = selectedPost["eventTime"] as? String
-        eventDate.text = selectedPost["eventDate"] as? String
-        price.text = selectedPost["price"] as? String
+        name.text = selectedPost.pickUpName//["name"] as? String
+        kitcolor.text = selectedPost.kitColor//["jerseyColor"] as? String
+        eventTime.text = selectedPost.eventTime//["eventTime"] as? String
+        eventDate.text = selectedPost.eventDate//["eventDate"] as? String
+        price.text = selectedPost.price//["price"] as? String
         
         
         let userID = Auth.auth().currentUser?.uid
         ref = Database.database().reference()
-        let currentPickUp = selectedPost["teamUid"] as? String
+        let currentPickUp = selectedPost.pickUpUid//["teamUid"] as? String
         
         ref?.child("Players").child(userID!).child("PickUp").observeSingleEvent(of: .value, with: { (snapshot) in
             // databaseRef.child("following").child(self.loggedInUser!.uid).child(self.otherUser?["uid"] as! String).observe(.value, with: { (snapshot) in
@@ -85,7 +85,7 @@ class PickUpProfileViewController: UIViewController {
         let userID = Auth.auth().currentUser?.uid
         ref = Database.database().reference()
         
-        let currentPickUp = selectedPost["teamUid"] as? String
+        let currentPickUp = selectedPost.pickUpUid//["teamUid"] as? String
         
         
         
