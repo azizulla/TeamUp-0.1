@@ -38,11 +38,11 @@ class MainTeamViewController: UIViewController, UITableViewDelegate, UITableView
     func startObservingDatabase () {
         let userID = Auth.auth().currentUser?.uid
         
-        ref?.child("Players").child(userID!).child("team").observe(.value, with: { (snapshot) in
+        ref?.child("Players").child(userID!).child("Team").observe(.value, with: { (snapshot) in
             var newItems = [Team]()
             
             for itemSnapShot in snapshot.children {
-                let item = Team(snapshot: itemSnapShot as! DataSnapshot)
+            let item = Team(snapshot: itemSnapShot as! DataSnapshot)
                 newItems.append(item)
             }
             
@@ -94,19 +94,35 @@ class MainTeamViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "myTeam", for: indexPath)
-        // var cell = UITableViewCell(style: .default, reuseIdentifier:"cell")
-        
+       
         let object = team[indexPath.row]
-        cell.textLabel?.text = object.teamName
+        //cell.textLabel?.text = object.teamUid
         
-        
+        ref?.child("Team").observe(.value, with: { (snapshot) in
+            var newItems = [Team]()
+            
+            for itemSnapShot in snapshot.children {
+                let item = Team(snapshot: itemSnapShot as! DataSnapshot)
+
+               if object.teamUid == item.teamUid{
+                    cell.textLabel?.text = item.teamName
+
+                } else {print("error")}
+            }
+            
+            self.team = newItems
+    
+
+            
+        })
+
         return cell
-        // return configureCell(cell, at: indexPath)
+
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "myTeamProfile"{
+    if segue.identifier == "myTeamProfile"{
             
             let navigationController = segue.destination as! UINavigationController
             let detailVC = navigationController.topViewController as! TeamProfileView
@@ -119,6 +135,7 @@ class MainTeamViewController: UIViewController, UITableViewDelegate, UITableView
             
     
            // detailVC.selectedTeam = team[indexPath.row]
+        
             
         }
         

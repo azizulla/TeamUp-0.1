@@ -52,7 +52,7 @@ class MainPickUpViewController: UIViewController, UITableViewDelegate, UITableVi
                 
                 let item = PickUp(snapshot: itemSnapShot as! DataSnapshot)
                 newItems.append(item)
-                print(item.pickUpName!, "testing pickup")
+             //   print(item.pickUpName!, "testing pickup")
             }
             
             self.pickUp = newItems
@@ -105,8 +105,24 @@ class MainPickUpViewController: UIViewController, UITableViewDelegate, UITableVi
         // var cell = UITableViewCell(style: .default, reuseIdentifier:"cell")
         
         let object = pickUp[indexPath.row]
-        cell.textLabel?.text = object.pickUpName
+       // cell.textLabel?.text = object.pickUpName
         
+        ref?.child("PickUp").observe(.value, with: { (snapshot) in
+            var newItems = [PickUp]()
+            
+            for itemSnapShot in snapshot.children {
+                let item = PickUp(snapshot: itemSnapShot as! DataSnapshot)
+                
+                if object.pickUpUid == item.pickUpUid{
+                    cell.textLabel?.text = item.pickUpUid
+                    
+                } else {print("error")}
+            }
+            
+            self.pickUp = newItems
+            
+            
+        })
         
         return cell
         // return configureCell(cell, at: indexPath)

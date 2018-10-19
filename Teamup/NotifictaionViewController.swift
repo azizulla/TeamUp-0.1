@@ -50,7 +50,7 @@ class NotifictaionViewController: UIViewController, UITableViewDelegate, UITable
         let userID = Auth.auth().currentUser?.uid
         print(userID!)
         
-        ref?.child("Players").child(userID!).child("Notify").child("Send").observe(.value, with: { (snapshot) in
+        ref?.child("Players").child(userID!).child("Notify").child("Recieve").observe(.value, with: { (snapshot) in
             
             var newItems = [Notify]()
             
@@ -100,6 +100,8 @@ class NotifictaionViewController: UIViewController, UITableViewDelegate, UITable
          return 1
     }
     
+
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return notify.count
@@ -113,67 +115,48 @@ class NotifictaionViewController: UIViewController, UITableViewDelegate, UITable
         let object = notify[indexPath.row]
        // cell?.playerNameLabel.text = object.eventUid
         cell?.messageLabel.text = "Player would love to join your team"
-        
-
-
+      
+        cell?.configureCell(quote: object)
+       // cell.acceptButtonTapped(quote: object)
+  
+        cell?.delegate = self
+        //cell?.accept.tag = indexPath.row
+       
 // getting sender info
         ref?.child("Players").child(object.fromUid!).observe(.value, with: { (snapshot) in
                 
                 let item = Players(snapshot: snapshot )
-          
               //  cell?.playerNameLabel.text = item.firstName
   
             
         })
-        
-        
-// getting event info
-        ref?.child("Team").observe(.value, with: { (snapshot) in
-            
-            if snapshot.hasChild(object.eventUid!) {
 
-                for itemSnapShot in snapshot.children {
-                    let item = Team(snapshot: itemSnapShot as! DataSnapshot)
-                  
-                    if object.eventUid == item.teamUid {
-                        
-                        cell?.playerNameLabel.text = item.teamName
-
-                    } else { print("no match teamUid")}
-                    
-                }
-                
-            } else {
-
-                self.ref?.child("PickUp").observe(.value, with: { (snapshot) in
-                
-                    if snapshot.hasChild(object.eventUid!){
-                        for itemSnapShot in snapshot.children {
-                            let item = PickUp(snapshot: itemSnapShot as! DataSnapshot )
-                            
-                            
-                                if object.eventUid == item.pickUpUid {
-                                cell?.playerNameLabel.text = item.pickUpName
-                            
-                                } else { print("pickup not matched child")}
-                        }
-                    } else {print("pickup not matched")}
-                    
-                })
-
-            }
-        })
-
-        
-        
         
         return cell!
         // return configureCell(cell, at: indexPath)
     }
     
+    
+  /*  @objc func alertButtonClicked(_ sender:UIButton)
+    {
+        
+        //let fn = notify[sender.tag].fromUid
+        displayAlert(fullName: fn!)
+    }
+    
+    func displayAlert(fullName:String)
+    {
+        let alert = UIAlertController(title: "Alert", message:fullName, preferredStyle: UIAlertControllerStyle.alert)
+        
+        let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil)
+        
+        alert.addAction(okAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
      func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
-    }
+    }*/
     
 /*    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -193,3 +176,73 @@ class NotifictaionViewController: UIViewController, UITableViewDelegate, UITable
     
 }
 
+
+
+extension NotifictaionViewController: MyCellDelegate {
+    
+    func acceptButtonTapped(_ sender: NotificationRequestCell) {
+        guard let tappedIndex = tableView.indexPath(for: sender) else {return}
+        print("LIKE")
+        
+        sender.accept.setTitle("accepted", for: .normal)
+        
+        // getting sender info
+        ref?.child("Players").child(sender.senderUID!).observe(.value, with: { (snapshot) in
+            
+            let item = Players(snapshot: snapshot )
+            
+            self.ref?.child("Players").child(sender.toUid!).child("Notify").child("Recieve").child(sender.eventUid!).removeValue()
+            self.ref?.child("Players").child(sender.senderUID!).child("Notify").child("Send").child(sender.eventUid!).removeValue()
+
+                self.tableView.reloadData()
+           
+        })
+        
+        self.ref?.child("Team").observe(.value, with: { (snapshot) in
+            
+            if snapshot.hasChild(sender.eventUid!) {
+                for itemSnapShot in snapshot.children {
+                    let item2 = Team(snapshot: itemSnapShot as! DataSnapshot)
+                    
+                    if sender.eventUid == item2.teamUid {
+                        
+                
+                        self.ref?.child("Players").child(sender.senderUID!).child("Team").child(sender.eventUid!).child("teamUid").setValue(sender.eventUid)
+                        self.ref?.child("Team").child(sender.eventUid!).child("player").child("uid").setValue(sender.senderUID!)
+                        
+                    } else { print("no match teamUid")}
+                    
+                }
+                
+            } else {
+             
+             self.ref?.child("PickUp").observe(.value, with: { (snapshot) in
+             
+             if snapshot.hasChild(sender.eventUid!){
+                for itemSnapShot in snapshot.children {
+                    let item = PickUp(snapshot: itemSnapShot as! DataSnapshot )
+             
+             
+                        if sender.eventUid == item.pickUpUid {
+                            self.ref?.child("Players").child(sender.senderUID!).child("PickUp").child(sender.eventUid!).child("teamUid").setValue(sender.eventUid)
+                            self.ref?.child("PickUp").child(sender.eventUid!).child("player").child("uid").setValue(sender.senderUID!)
+                
+                        } else { print("pickup not matched child")}
+                }
+             } else {print("pickup not matched")}
+             
+             })
+             
+             }
+        })
+    }
+    
+    func rejectButtonTapped(_ sender: NotificationRequestCell) {
+        guard let tappedIndex = tableView.indexPath(for: sender) else {return}
+        print("LOVE", sender, tappedIndex)
+        sender.reject.setTitleColor(.orange, for: .normal)
+    }
+
+    
+   
+}

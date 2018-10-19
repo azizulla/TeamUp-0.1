@@ -38,7 +38,8 @@ class TeamProfileView: UIViewController {
         
         
         
-        let userID = Auth.auth().currentUser?.uid
+        
+      /*  let userID = Auth.auth().currentUser?.uid
         ref = Database.database().reference()
         let currenTeam = selectedTeam.teamUid
         
@@ -64,6 +65,7 @@ class TeamProfileView: UIViewController {
         }
         
         
+        */
         
     }
     
@@ -89,13 +91,13 @@ class TeamProfileView: UIViewController {
         let event:[String : AnyObject] = ["fromUid": userID as AnyObject,
                                           "toUid":selectedTeam.author as AnyObject,
                                           "stats": "pending" as AnyObject,
-                                          "uid": "key" as AnyObject,
+                                        
                                           "eventUid": selectedTeam.teamUid as AnyObject]
         
         // ref?.child("notify").child(key!).setValue(team)
         
-        ref?.child("Players").child(currentPickUpAuthor!).child("Notify").child("Recieve").child(uid!).setValue(event)
-        ref?.child("Players").child(userID!).child("Notify").child("Send").child(uid!).setValue(event)
+        ref?.child("Players").child(currentPickUpAuthor!).child("Notify").child("Recieve").child(selectedTeam.teamUid!).setValue(event)
+        ref?.child("Players").child(userID!).child("Notify").child("Send").child(selectedTeam.teamUid!).setValue(event)
         
         
         

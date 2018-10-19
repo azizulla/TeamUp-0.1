@@ -55,6 +55,7 @@ class NewPickUpViewController: UIViewController {
         
         let pickup:[String : AnyObject] = ["name":pickUpName as AnyObject,
                                            "squad":squadSize as AnyObject,
+                                           "author":userID as AnyObject,
                                            "jerseyColor":kitColors as AnyObject,
                                            "price":eventPrice as AnyObject,
                                            "teamUid":uid as AnyObject]

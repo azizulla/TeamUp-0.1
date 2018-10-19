@@ -45,7 +45,7 @@ class PickUpProfileViewController: UIViewController {
         kitcolor.text = selectedPost.kitColor//["jerseyColor"] as? String
         eventTime.text = selectedPost.eventTime//["eventTime"] as? String
         eventDate.text = selectedPost.eventDate//["eventDate"] as? String
-        price.text = selectedPost.price//["price"] as? String
+       // price.text = selectedPost.price//["price"] as? String
         
         
         let userID = Auth.auth().currentUser?.uid
@@ -85,8 +85,9 @@ class PickUpProfileViewController: UIViewController {
         let userID = Auth.auth().currentUser?.uid
         ref = Database.database().reference()
         
-        let currentPickUpAuthor = selectedPost.author
-        
+       // let currentPickUpAuthor = selectedPost.author
+       let currentPickUpAuthor = selectedPost.author
+        print(currentPickUpAuthor)
         
         let uid = ref?.childByAutoId().key
         let event:[String : AnyObject] = ["fromUid": userID as AnyObject,
@@ -97,8 +98,8 @@ class PickUpProfileViewController: UIViewController {
         
        // ref?.child("notify").child(key!).setValue(team)
         
-        ref?.child("Players").child(currentPickUpAuthor!).child("Notify").child("Recieve").child(uid!).setValue(event)
-        ref?.child("Players").child(userID!).child("Notify").child("Send").child(uid!).setValue(event)
+        ref?.child("Players").child(currentPickUpAuthor!).child("Notify").child("Recieve").child(selectedPost.pickUpUid!).setValue(event)
+        ref?.child("Players").child(userID!).child("Notify").child("Send").child(selectedPost.pickUpUid!).setValue(event)
 
         
         

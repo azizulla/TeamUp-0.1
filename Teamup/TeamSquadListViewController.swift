@@ -60,7 +60,7 @@ class TeamSquadListViewController: UITableViewController  {
         //  let currentPlayer = selectedPost["uid"] as? String
         let currentTeam = selectedTeam.teamUid
         
-        ref?.child("Team").child(currentTeam!).child("players").observe(.value, with: { (snapshot) in
+        ref?.child("Team").child(currentTeam!).child("player").observe(.value, with: { (snapshot) in
             var newItems = [Players]()
             
             for itemSnapShot in snapshot.children {
