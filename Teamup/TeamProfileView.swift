@@ -14,12 +14,13 @@ import FirebaseAuth
 
 
 
-class TeamProfileView: UIViewController {
+class TeamProfileView: UIViewController, UITableViewDelegate, UITableViewDataSource  {
     
     var selectedTeam: Team!
     var team = [Team]()
     var ref:DatabaseReference?
     var otherUser:NSDictionary?
+    var players = [Players]()
     
     var refreshcontrol = UIRefreshControl()
     
@@ -28,6 +29,7 @@ class TeamProfileView: UIViewController {
     @IBOutlet weak var teamName: UILabel!
     @IBOutlet weak var teamSquadsize: UILabel!
     @IBOutlet weak var joinButton: UIButton!
+    @IBOutlet weak var tableView: UITableView!
     
     
     override func viewDidLoad() {
@@ -37,25 +39,41 @@ class TeamProfileView: UIViewController {
         ref = Database.database().reference()
         
         
+        startObservingDatabase()
         
-        
-      /*  let userID = Auth.auth().currentUser?.uid
+        let userID = Auth.auth().currentUser?.uid
         ref = Database.database().reference()
         let currenTeam = selectedTeam.teamUid
         
-        ref?.child("Players").child(userID!).child("team").observeSingleEvent(of: .value, with: { (snapshot) in
+        ref?.child("Players").child(userID!).child("Team").observeSingleEvent(of: .value, with: { (snapshot) in
             // databaseRef.child("following").child(self.loggedInUser!.uid).child(self.otherUser?["uid"] as! String).observe(.value, with: { (snapshot) in
             
             if snapshot.hasChild(currenTeam!)
             {
                 self.joinButton.setTitle("Unfollow", for: .normal)
-                print("You are following the user")
+                print("You are already a memeber of this team")
                 
+                
+                self.ref?.child("Team").observe(.value, with: { (snapshot) in
+                    for itemSnapShot in snapshot.children {
+                        let item = Team(snapshot: itemSnapShot as! DataSnapshot)
+                        
+                        if currenTeam == item.teamUid{
+                            self.teamName.text = item.teamName
+                            self.teamSquadsize.text = item.squad
+                            
+                        } else {print("error team")}
+                    }
+                    
+                    //   self.team = newItems
+                    
+                    
+                })
             }
             else
             {
                 self.joinButton.setTitle("Follow", for: .normal)
-                print("You are not following the user")
+                print("You are not member of this team")
             }
             
             
@@ -65,10 +83,77 @@ class TeamProfileView: UIViewController {
         }
         
         
-        */
-        
     }
     
+    func startObservingDatabase () {
+        //  let currentPlayer = selectedPost["uid"] as? String
+        let currentTeam = selectedTeam.teamUid
+        
+        ref?.child("Team").child(currentTeam!).child("player").observe(.value, with: { (snapshot) in
+            var newItems = [Players]()
+            
+            for itemSnapShot in snapshot.children {
+                let item = Players(snapshot: itemSnapShot as! DataSnapshot)
+                
+                newItems.append(item)
+            }
+            
+            self.players = newItems
+            self.tableView.reloadData()
+            
+        })
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        return players.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SquadCell", for: indexPath) as! SquadCell
+        
+        let object = players[indexPath.row]
+        
+         let currentTeam = selectedTeam.teamUid
+       
+        ref?.child("Players").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if snapshot.hasChild(object.uid)
+            {
+                for itemSnapShot in snapshot.children {
+                    let item = Players(snapshot: itemSnapShot as! DataSnapshot)
+                    
+                    if object.uid == item.uid{
+                      //  cell.textLabel?.text = item.firstName
+                        cell.playerName.text = item.firstName
+                        cell.playerPosition.text = item.position
+                        
+                    } else {print("error team")}
+                }
+                
+            }
+            else { print("not matched" )}
+            
+            
+        }) { (error) in
+            
+            print(error.localizedDescription)
+        }
+        
+        
+        return cell
+        // return configureCell(cell, at: indexPath)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
+    }
     @IBAction func cancel(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
@@ -91,64 +176,23 @@ class TeamProfileView: UIViewController {
         let event:[String : AnyObject] = ["fromUid": userID as AnyObject,
                                           "toUid":selectedTeam.author as AnyObject,
                                           "stats": "pending" as AnyObject,
-                                        
+                                          
                                           "eventUid": selectedTeam.teamUid as AnyObject]
         
         // ref?.child("notify").child(key!).setValue(team)
         
-        ref?.child("Players").child(currentPickUpAuthor!).child("Notify").child("Recieve").child(selectedTeam.teamUid!).setValue(event)
-        ref?.child("Players").child(userID!).child("Notify").child("Send").child(selectedTeam.teamUid!).setValue(event)
+        ref?.child("Players").child(currentPickUpAuthor!).child("Notify").child("Recieve").child(currenTeam!).setValue(event)
+        ref?.child("Players").child(userID!).child("Notify").child("Send").child(currenTeam!).setValue(event)
         
-        
-        
-        
-        
-      /*
-        //  --- get team detail
-        
-        ref?.child("Team").child(currenTeam!).observeSingleEvent(of: .value, with: { (snapshot) in
-            let item = Team(snapshot: snapshot as! DataSnapshot)
-            
-            let teamName = item.teamName
-            let key = snapshot.key
-            
-            let playerinfo:[String : AnyObject] = ["name": teamName as AnyObject,
-                                                   "teamUid": key as AnyObject]
-            let post = ["/team/\(String(describing: key))": playerinfo]
-            self.ref?.child("Players").child(userID!).updateChildValues(post)
-            
-            
-        }) { (error) in
-            print(error.localizedDescription)
-        }
-        
-        //  --- get player detail
-        
-        ref?.child("Players").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
-            //let value = snapshot.value as? NSDictionary
-            let item = Players(snapshot: snapshot as! DataSnapshot)
-            let firstName = item.firstName
-            
-            let key = snapshot.key
-            
-            let playerinfo:[String : AnyObject] = ["firstName": firstName as AnyObject,
-                                                   "uid": userID as AnyObject]
-            let post = ["/players/\(String(describing: key))": playerinfo]
-            
-            self.ref?.child("Team").child(currenTeam!).updateChildValues(post)
-            
-            
-        }) { (error) in
-            print(error.localizedDescription)
-        }
-        
-       */
         
     } // end of join button
- 
     
-   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+    
+    
+    
+    
+ /*   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    
         if segue.identifier == "PassTeamSquadInfo"{
             
             let navigationController = segue.destination as! UINavigationController
@@ -165,9 +209,23 @@ class TeamProfileView: UIViewController {
             
         }
         
+    }*/
+    
+    //
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "squadPlayerProfile"{
+            
+            
+            guard let detailVC = segue.destination as? PlayerProfileViewController, let indexPath = tableView.indexPathForSelectedRow else{ return }
+            
+            detailVC.selectedPost = players[indexPath.row]
+            print(players.count, "ssss")
+            
+            
+            
+            
+            
+        }
     }
-    
-    
-    
 }
-

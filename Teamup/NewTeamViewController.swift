@@ -51,16 +51,17 @@ class NewTeamViewController: UIViewController {
         
         
         
-        let player:[String : AnyObject] = ["players": userID as AnyObject]
+        let player:[String : AnyObject] = ["uid": userID as AnyObject]
         
         let team:[String : AnyObject] = ["name":teamName as AnyObject,
                                          "squad":teamPlayers as AnyObject,
-                                         "player":player as AnyObject,
+                                        // "player":player as AnyObject,
                                          "author": userID as AnyObject,
                                          "teamUid": key as AnyObject]
         
         ref?.child("Team").child(key!).setValue(team)
-        
+        ref?.child("Team").child(key!).child("player").child(userID!).setValue(player)
+        ref?.child("Players").child(userID!).child("Team").child(key!).child("teamUid").setValue(key)
         
         
         dismiss(animated: true, completion: nil)

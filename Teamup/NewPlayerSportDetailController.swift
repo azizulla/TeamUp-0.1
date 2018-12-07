@@ -22,6 +22,7 @@ class NewPlayerSportDetailController: UIViewController{
     // var storageRef = Storage().reference()
     
     let imagePicker = UIImagePickerController()
+    var positionInfo = "aziz"
     
     
     @IBOutlet weak var position: UITextField!
@@ -35,10 +36,37 @@ class NewPlayerSportDetailController: UIViewController{
         //     profileImage.image = UIImage(named: "867366")
     }
     
+    @IBOutlet weak var nextDetail: UIButton!
+    @IBOutlet weak var playerPosition: UISegmentedControl!
     
+    @IBAction func playerPositionSegment(_ sender: Any) {
+        
+        switch playerPosition.selectedSegmentIndex {
+        case 0:
+            print("GK")
+            positionInfo = "GoalKeeper"
+            
+        case 1:
+            print("D")
+             positionInfo = "Defender"
+        case 2:
+            print("M")
+             positionInfo = "MedFielder"
+        case 3:
+            print("ST")
+             positionInfo = "Stricker"
+        default:
+            print("couldnt controle segment")
+        }
+        
+      
+        
+    }
     // ---  saving the player
     
     @IBAction func playerDetail(_ sender: Any) {
+       
+      
         
         let userID = Auth.auth().currentUser?.uid
         
@@ -51,29 +79,21 @@ class NewPlayerSportDetailController: UIViewController{
         let cancelAction = UIAlertAction(title: "Ok", style: .cancel)
         alert.addAction(cancelAction)
         
-        // let profileImage = self.profileImage
+
+        guard !positionInfo.isEmpty else { return present(alert, animated: true, completion: nil)}
         
+    
+            present(alert, animated: true, completion: nil)
+            nextDetail.isHidden = true
+            
         
-        //   guard let playerEmail = playerEmailTextField.text, !playerEmail.isEmpty else { return present(alert, animated: true, completion: nil)}
-        guard let position = position.text, !position.isEmpty else { return present(alert, animated: true, completion: nil)}
-        guard let jerseyNumber = jerseyNumber.text, !jerseyNumber.isEmpty else { return present(alert, animated: true, completion: nil)}
+            guard let jerseyNumber = jerseyNumber.text, !jerseyNumber.isEmpty else { return present(alert, animated: true, completion: nil)}
         
-        
-        
-        
-        
-        
-        
-        let player:[String : AnyObject] = ["position":position as AnyObject,
+            let player:[String : AnyObject] = ["position":positionInfo as AnyObject,
                                            "kitNumber":jerseyNumber as AnyObject]
         
-        
-        
-        
-        // [START basic_write]
-        self.ref?.child("Players").child(userID!).updateChildValues(player)
-        // [END basic_write]
-        //   self.performSegue(withIdentifier: "signIn", sender: nil)
+            self.ref?.child("Players").child(userID!).updateChildValues(player)
+       
         
         
         //  dismiss(animated: true, completion: nil)

@@ -25,11 +25,11 @@ class MainTeamViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var noDataLabel: UILabel!
     
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         ref = Database.database().reference()
-        
         startObservingDatabase()
         
     }
@@ -96,10 +96,10 @@ class MainTeamViewController: UIViewController, UITableViewDelegate, UITableView
         let cell = tableView.dequeueReusableCell(withIdentifier: "myTeam", for: indexPath)
        
         let object = team[indexPath.row]
-        //cell.textLabel?.text = object.teamUid
+        cell.textLabel?.text = object.teamUid
         
         ref?.child("Team").observe(.value, with: { (snapshot) in
-            var newItems = [Team]()
+          //  var newItems = [Team]()
             
             for itemSnapShot in snapshot.children {
                 let item = Team(snapshot: itemSnapShot as! DataSnapshot)
@@ -107,19 +107,48 @@ class MainTeamViewController: UIViewController, UITableViewDelegate, UITableView
                if object.teamUid == item.teamUid{
                     cell.textLabel?.text = item.teamName
 
-                } else {print("error")}
+                } else {print("error team3")}
             }
             
-            self.team = newItems
-    
+         //   self.team = newItems
 
-            
         })
 
         return cell
 
     }
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool
+    {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]?
+    {
+        let deleteAction = UITableViewRowAction(style: .destructive, title: "Message") { (action, indexpath) in
+            //YOUR_CODE_HERE
+            print("message", indexpath.row)
+        }
+        deleteAction.backgroundColor = .red
+        return [deleteAction]
+    }
+    
+  /*  @available(iOS 11.0, *)
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let accpet = UIContextualAction(style: .normal, title: "Accept") { (action, view, nil) in
+            print("accpet")
+        }
+        return UISwipeActionsConfiguration(actions: [accpet])
+    }*/
+    
+  /*  func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        print(indexPath.row)
+    }
+ 
+    */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
     if segue.identifier == "myTeamProfile"{

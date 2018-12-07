@@ -28,20 +28,19 @@ class TeamSquadListViewController: UITableViewController  {
         super.viewDidLoad()
         
         ref = Database.database().reference()
-        
-        
-        startObservingDatabase()
+
+       startObservingDatabase()
     }
     
     @IBAction func cancel(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
-   /* func startObservingDatabase () {
+    func startObservingDatabase () {
         //  let currentPlayer = selectedPost["uid"] as? String
         let currentTeam = selectedTeam.teamUid
         
-        ref?.child("Team").child(currentTeam!).child("players").observe(.value, with: { (snapshot) in
+        ref?.child("Team").child(currentTeam!).child("player").observe(.value, with: { (snapshot) in
             var newItems = [Players]()
             
             for itemSnapShot in snapshot.children {
@@ -55,8 +54,8 @@ class TeamSquadListViewController: UITableViewController  {
             
         })
     }
- */
-    func startObservingDatabase () {
+ 
+   /* func startObservingDatabase () {
         //  let currentPlayer = selectedPost["uid"] as? String
         let currentTeam = selectedTeam.teamUid
         
@@ -77,7 +76,7 @@ class TeamSquadListViewController: UITableViewController  {
             
         })
     }
-    
+    */
     /*
      ref?.child("Players").observeSingleEvent(of: .value, with: { (snapshot) in
      
@@ -123,25 +122,23 @@ class TeamSquadListViewController: UITableViewController  {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "TeamSquadCell", for: indexPath)
-        
         let object = players[indexPath.row]
-
+        
         ref?.child("Players").observeSingleEvent(of: .value, with: { (snapshot) in
-            
-        cell.textLabel?.text = object.firstName
-            
+                        
             if snapshot.hasChild(object.uid)
             {
-            
-                
-                print("match")
-                
+                for itemSnapShot in snapshot.children {
+                    let item = Players(snapshot: itemSnapShot as! DataSnapshot)
+                    
+                    if object.uid == item.uid{
+                        cell.textLabel?.text = item.firstName
+                        
+                    } else {print("error team")}
+                }
+ 
             }
-            else
-            {
-
-                print("not matched" )
-            }
+            else { print("not matched" )}
             
             
         }) { (error) in
@@ -171,9 +168,7 @@ class TeamSquadListViewController: UITableViewController  {
             detailVC.selectedPost = players[indexPath.row]
             print(players.count, "ssss")
             
-            
-            
-            
+  
             
         }
     }

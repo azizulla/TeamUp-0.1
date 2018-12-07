@@ -12,6 +12,8 @@ import FirebaseAuth
 
 class PlayersCell: UITableViewCell {
     
+    var selectedTeam: Team!
+    
     var ref:DatabaseReference?
     @IBOutlet weak var playerNameLabel: UILabel!
     @IBOutlet weak var playerPositionLabel: UILabel!
@@ -22,12 +24,7 @@ class PlayersCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        /*
-         self.layer.cornerRadius = self.frame.height / 2
-         self.clipsToBounds = true
-         
-         profileImage.layer.cornerRadius = 10
-         */
+       
         self.profileImage.layer.cornerRadius = 10
         self.profileImage.clipsToBounds = true
     }
@@ -35,6 +32,7 @@ class PlayersCell: UITableViewCell {
     
     
     @IBAction func playerInvitation(_ sender: Any) {
-        
+        //self.ref?.child("Players").child(sender.senderUID!).child("Team").child(sender.eventUid!).child("teamUid").setValue(sender.eventUid)
+        //self.ref?.child("Team").child(sender.eventUid!).child("player").child(sender.senderUID!).child("uid").setValue(sender.senderUID!)
     }
 }

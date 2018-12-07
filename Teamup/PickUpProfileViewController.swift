@@ -41,6 +41,10 @@ class PickUpProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+       // joinButton.layer.cornerRadius = 25
+       // joinButton.clipsToBounds = true
+        
+      
         name.text = selectedPost.pickUpName//["name"] as? String
         kitcolor.text = selectedPost.kitColor//["jerseyColor"] as? String
         eventTime.text = selectedPost.eventTime//["eventTime"] as? String
@@ -59,6 +63,27 @@ class PickUpProfileViewController: UIViewController {
             {
                 self.joinButton.setTitle("Already A member", for: .normal)
                 print("You are following the user")
+                
+                self.ref?.child("PickUp").observe(.value, with: { (snapshot) in
+              //      var newItems = [Team]()
+                    
+                    for itemSnapShot in snapshot.children {
+                        let item = PickUp(snapshot: itemSnapShot as! DataSnapshot)
+                        
+                        if currentPickUp == item.pickUpUid{
+                            self.name.text = item.pickUpName//["name"] as? String
+                            self.kitcolor.text = item.kitColor//["jerseyColor"] as? String
+                            self.eventTime.text = item.eventTime//["eventTime"] as? String
+                            self.eventDate.text = item.eventDate//["eventDate"] as? String
+                            
+                            
+                        } else {print("error pickup")}
+                    }
+                    
+                    //   self.team = newItems
+                    
+                    
+                })
                 
             }
             else
